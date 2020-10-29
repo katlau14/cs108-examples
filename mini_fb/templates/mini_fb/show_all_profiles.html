@@ -1,0 +1,27 @@
+<!-- show_all_profiles.html -->
+
+<h1>Showing All Profiles</h1>
+
+{% for profile in profiles %}
+<table>
+    <colgroup>
+        <col span="1" style="width: 10;">
+        <col span="1" style="width: 10;">
+        <col span="1" style="width: 10;">
+    </colgroup>
+    <tr>
+    
+    <th>Name</th>
+    <th>Hometown</th>
+    <th>Image</th>
+    </tr>
+    <tr>
+    <td>{{profile.first_name}} {{profile.last_name}}</td><br>
+     <td>{{profile.city}}</td><br>
+     <td><img src="{{profile.image_url}}" style="max-width: 100;"></td>
+    </tr>
+
+</table>
+
+{% endfor %}
+
