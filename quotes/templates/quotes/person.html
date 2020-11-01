@@ -1,0 +1,17 @@
+<!--person.html-->
+
+<h1>{{person}}</h1>
+
+<!--<img src='{{person.get_random_image}}' style='width:200'>
+-->
+<ul>
+{% for quote in person.get_all_quotes %}
+    <li>{{quote.text}}</li>
+{% endfor %}
+</ul>
+<h2>All images of {{person}}</h2>
+<ul>
+    {% for image in image.get_all_quotes %}
+        <li><img src='{{image}}' style='width:200'></li>
+    {% endfor %}
+    </ul>
