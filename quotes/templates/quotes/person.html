@@ -1,5 +1,6 @@
 <!--person.html-->
-
+{% extends 'quotes/base.html' %}
+{% block content %}
 <h1>{{person}}</h1>
 
 <!--<img src='{{person.get_random_image}}' style='width:200'>
@@ -15,3 +16,4 @@
         <li><img src='{{image}}' style='width:200'></li>
     {% endfor %}
     </ul>
+    {% endblock %}

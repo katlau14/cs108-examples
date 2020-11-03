@@ -1,0 +1,19 @@
+<!--create_quote_form.html-->
+{% extends 'quotes/base.html' %}
+{% block content %}
+<h1>Create a new quote</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <!--{{form}} -->
+    <!--{{form.as_p}} <!--paragraph style formatting-->
+    <table>
+    {{form.as_table}}
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Add a quote!"></td>
+    </tr>
+    </table>
+
+</form>
+{% endblock %}
