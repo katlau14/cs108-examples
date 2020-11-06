@@ -2,6 +2,7 @@
 {% extends 'mini_fb/base.html' %}
 {% block content %}
 
+
 <h1>{{profile.first_name}} {{profile.last_name}}</h1>
 <img src="{{profile.image_url}}" style="max-width: 400;">
 <table>
@@ -11,6 +12,7 @@
     <tr>
 <td>{{profile.city}}</td>
 </tr>
+<h3><a href="{% url 'update_profile_form' profile.pk %}">Edit this profile</a></h3>
 </table>
 <h2>Status Messages</h2>
 <table>
@@ -25,5 +27,15 @@
 </tr>
 {% endfor %}
 </table>
+<h2>Post a status message</h2>
+<form method="POST" action="{% url 'post_status' profile.pk %}">
+    {% csrf_token %}
+<table>
+    Message: <input id="new_message" type="text" name="new_message">
+    <tr>
+        <td><input type="submit" value="Share"></td>
+    </tr>
+</table>
+</form>
 
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -20,6 +21,7 @@ class Profile(models.Model):
         '''obtain messages for profile'''
 
         return StatusMessage.objects.filter(profile=self)
+        
 
 class StatusMessage(models.Model):
     '''model the data attributes of Status message'''
