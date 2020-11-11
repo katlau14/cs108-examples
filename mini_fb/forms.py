@@ -40,7 +40,9 @@ class UpdateProfileForm(forms.ModelForm):
 class CreateStatusMessageForm(forms.ModelForm):
     '''a form to create a new status message'''
 
+    image = forms.ImageField(label="Image", required=False)
+
     class Meta:
 
         model = StatusMessage
-        fields = ['timestamp', 'message']
+        fields = ['timestamp', 'message', 'image']

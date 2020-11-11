@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
-from .models import Profile
+from .models import Profile, StatusMessage
 from django.urls import reverse
 
 # Create your views here.
@@ -52,17 +52,56 @@ def post_status_message(request, pk):
         # print(request.POST) # for debugging at the console
 
         # create the form object from the request's POST data
-        form = CreateStatusMessageForm(request.POST or None)
+        form = CreateStatusMessageForm(request.POST or None, request.FILES or None)
 
         if form.is_valid():
 
             # create the StatusMessage object with the data in the CreateStatusMessageForm
             status_message = form.save(commit=False) # don't commit to database yet
+            image = form.save(commit=False)
             # find the profile that matches the `pk` in the URL
             profile = Profile.objects.get(pk=pk)
+            status = StatusMessage.objects.get(pk=pk)
             # attach FK profile to this status message
             status_message.profile = profile 
             status_message.save() # now commit to database
+        
 
     # redirect the user to the show_profile_page view
     return redirect(reverse('show_profile_page', kwargs={'pk': pk}))
+
+class DeleteStatusMessageView(DeleteView):
+    '''delete an existing status message'''
+
+    model = Profile
+    template_name = "mini_fb/delete_status_form.html"
+
+    def get_context_data(self, **kwargs):
+        '''return context data'''
+
+        context = super(DeleteStatusMessageView, self).get_context_data(**kwargs)
+        st_msg = StatusMessage.objects.get(pk=self.kwargs['status_pk'])
+        context['statusmessage'] = st_msg
+        profile_pk = self.kwargs['profile_pk']
+        context['profile_pk'] = profile_pk
+        return context
+
+    def get_object(self):
+        '''return status message to be deleted'''
+
+        # read the URL data values into variables
+        profile_pk = self.kwargs['profile_pk']
+        status_pk = self.kwargs['status_pk']
+
+        # find the Status Message object, and return it
+        status = StatusMessage.objects.get(pk=status_pk, profile=profile_pk)
+        return status
+
+    def get_success_url(self):
+        '''return the URL to which to redirect the user'''
+
+        profile_pk = self.kwargs['profile_pk']
+        status_pk = self.kwargs['status_pk']
+        
+        return reverse('show_profile_page', kwargs={'pk': profile_pk})
+

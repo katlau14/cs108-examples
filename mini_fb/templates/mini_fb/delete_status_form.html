@@ -1,0 +1,16 @@
+<!--delete_status_form.html-->
+<h2>Delete status message?</h2>
+
+{{statusmessage}}
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type='submit' name='yes' value='yes'>
+</form>
+<form method='GET' action="{% url 'show_profile_page' profile_pk %}">
+    {% csrf_token %}
+    <input type='submit' name="no" value="no">
+</form>

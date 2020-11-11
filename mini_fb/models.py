@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 # Create your models here.
 
@@ -25,10 +26,11 @@ class Profile(models.Model):
 
 class StatusMessage(models.Model):
     '''model the data attributes of Status message'''
-    timestamp = models.DateTimeField(blank=True)
+    timestamp = models.DateTimeField(default=timezone.now)
     message = models.TextField(blank=True)
+    image = models.ImageField(blank=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
         '''returns a string representation of the status message'''
-        return f"{self.timestamp} {self.message}"
+        return f'{self.timestamp} {self.message}'

@@ -14,6 +14,7 @@
 </tr>
 <h3><a href="{% url 'update_profile_form' profile.pk %}">Edit this profile</a></h3>
 </table>
+
 <h2>Status Messages</h2>
 <table>
 <tr>
@@ -24,15 +25,22 @@
 <tr>
     <td>{{statusmessage.timestamp}}</td> 
     <td>{{statusmessage.message}}</td>
+    <td>{% if statusmessage.image %}
+        <img src='{{statusmessage.image.url}}' style='max-width: 100;'>
+        {% endif %}<a href= "{% url 'delete_status' profile_pk=profile.pk status_pk=statusmessage.pk %}">delete</a></td>
 </tr>
 {% endfor %}
 </table>
+
 <h2>Post a status message</h2>
-<form method="POST" action="{% url 'post_status' profile.pk %}">
+<form method="POST" enctype="multipart/form-data" action="{% url 'post_status' profile.pk %}">
     {% csrf_token %}
 <table>
-    Message: <input id="new_message" type="text" name="new_message">
+    {{create_status_form}}
     <tr>
+        {% if statusmessage.image %}
+        <img src='{{statusmessage.image.url}}' style='max-width: 100;'>
+        {% endif %}
         <td><input type="submit" value="Share"></td>
     </tr>
 </table>
