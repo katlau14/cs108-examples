@@ -18,6 +18,7 @@ class CreateProfileForm(forms.ModelForm):
         
         model = Profile
         fields = ['first_name', 'last_name', 'birth_date', 'city', 'email', 'image_url']
+
         
 class UpdateProfileForm(forms.ModelForm):
     '''update an existing profile'''

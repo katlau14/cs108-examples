@@ -1,7 +1,7 @@
 # quotes/urls.py
 
 from django.urls import path
-from .views import ShowAllProfilesView, ShowProfilePageView, CreateProfileView, UpdateProfileView, post_status_message, DeleteStatusMessageView
+from .views import * #ShowAllProfilesView, ShowProfilePageView, CreateProfileView, UpdateProfileView, post_status_message, DeleteStatusMessageView, ShowNewsFeedView
 
 urlpatterns = [
     path('', ShowAllProfilesView.as_view(), name="show_all_profiles"),
@@ -10,6 +10,9 @@ urlpatterns = [
     path('profile/<int:pk>/update', UpdateProfileView.as_view(), name = "update_profile_form"),
     path('profile/<int:pk>/post_status', post_status_message, name = "post_status"),
     path('profile/<int:profile_pk>/delete_status/<int:status_pk>', DeleteStatusMessageView.as_view(), name = "delete_status"),
+    path('profile/<int:pk>/news_feed', ShowNewsFeedView.as_view(), name = "show_news_feed"),
+    path('profile/<int:pk>/show_possible_friends', ShowPossibleFriendsView.as_view(), name = "show_possible_friends"),
+    path('profile/<int:profile_pk>/add_friend/<int:friend_pk>', add_friend, name = "add_friend"),
     
     
 ]

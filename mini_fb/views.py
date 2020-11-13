@@ -63,7 +63,7 @@ def post_status_message(request, pk):
             profile = Profile.objects.get(pk=pk)
             status = StatusMessage.objects.get(pk=pk)
             # attach FK profile to this status message
-            status_message.profile = profile 
+            status_message.profile = profile
             status_message.save() # now commit to database
         
 
@@ -104,4 +104,30 @@ class DeleteStatusMessageView(DeleteView):
         status_pk = self.kwargs['status_pk']
         
         return reverse('show_profile_page', kwargs={'pk': profile_pk})
+
+class ShowNewsFeedView(DetailView):
+    '''shows news feed of status messages'''
+
+    model = Profile
+    template_name = "mini_fb/show_news_feed.html"
+    context_object_name = "profile"
+
+class ShowPossibleFriendsView(DetailView):
+    '''shows possible friends for a profile'''
+
+    model = Profile
+    template_name = "mini_fb/show_possible_friends.html"
+    context_object_name = "profile"
+
+def add_friend(request, profile_pk, friend_pk):
+    '''add a friend to a given profile'''
+
+    profile = Profile.objects.get(pk=profile_pk)
+    friend = Profile.objects.get(pk=friend_pk)
+    
+    profile.friends.add(friend)
+    profile.save()
+    return redirect(reverse('show_profile_page', kwargs={'pk': profile_pk}))
+
+
 

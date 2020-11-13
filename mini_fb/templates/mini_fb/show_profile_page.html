@@ -12,7 +12,9 @@
     <tr>
 <td>{{profile.city}}</td>
 </tr>
-<h3><a href="{% url 'update_profile_form' profile.pk %}">Edit this profile</a></h3>
+<h4><a href="{% url 'update_profile_form' profile.pk %}">Edit this profile</a>
+    <a href="{% url 'show_news_feed' profile.pk %}">News Feed</a>
+    <a href="{% url 'show_possible_friends' profile.pk %}">Find Friends</a></h4>
 </table>
 
 <h2>Status Messages</h2>
@@ -20,16 +22,32 @@
 <tr>
 {% for statusmessage in profile.get_status_messages %}
     <th>Time</th>
+    <td></td>
     <th>Message</th>
+    <td></td>
 </tr>
 <tr>
     <td>{{statusmessage.timestamp}}</td> 
+    <td></td>
     <td>{{statusmessage.message}}</td>
+    <td></td>
     <td>{% if statusmessage.image %}
         <img src='{{statusmessage.image.url}}' style='max-width: 100;'>
-        {% endif %}<a href= "{% url 'delete_status' profile_pk=profile.pk status_pk=statusmessage.pk %}">delete</a></td>
+        {% endif %}
+        <a href= "{% url 'delete_status' profile_pk=profile.pk status_pk=statusmessage.pk %}">delete</a></td>
 </tr>
 {% endfor %}
+</table>
+
+<h2>{{profile.first_name}} {{profile.last_name}}'s Friends</h2>
+<table>
+    <tr>
+        {% for friends in profile.get_friends %}
+        <td><img src="{{friends.image_url}}" style="max-width: 100;"></td>
+        <td>{{friends.first_name}} {{friends.last_name}}</td>
+        <td><a href="{% url 'show_profile_page' friends.pk %}">{{friends.first_name}}'s Profile</a></td>
+    </tr>
+    {% endfor %}
 </table>
 
 <h2>Post a status message</h2>

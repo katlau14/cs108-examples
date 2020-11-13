@@ -1,4 +1,7 @@
 <!--delete_status_form.html-->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+
 <h2>Delete status message?</h2>
 
 {{statusmessage}}
@@ -14,3 +17,5 @@
     {% csrf_token %}
     <input type='submit' name="no" value="no">
 </form>
+
+{% endblock %}
