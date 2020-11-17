@@ -1,0 +1,26 @@
+<!--show_playdate_page.html-->
+
+<h2>Playdate</h2>
+
+<table>
+    <th>Playdate Location:</th>
+    <tr>
+        <td>{{playdate.location}}</td>
+    </tr>
+    <th>Time:</th>
+    <tr>
+        <td>{{playdate.time}}</td>
+    </tr>
+    <th>Pets on this Playdate:</th>
+    <tr>
+    {% for pets in playdate.get_pets %}
+        <td>{{pets.name}}</td>
+    </tr>
+    {% endfor %}
+    <th>Pet Owners:</th>
+    <tr>
+    {% for owners in playdate.get_owners %}
+        <td>{{owners.first_name}} {{owners.last_name}}</td>
+    </tr>
+    {% endfor %}
+</table>

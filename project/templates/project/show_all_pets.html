@@ -1,0 +1,19 @@
+<!--show_all_pets.html-->
+
+<h1>All Pets</h1>
+{% for pet in pets %}
+<table>
+    <tr>
+        <th>{{pet.name}}</th>
+    </tr>
+    <tr>
+        <td><img src="{{pet.image.url}}" style="max-width: 200;"></td>
+    </tr>
+    <tr>
+        <td>Breed: {{pet.breed}}</td>
+    </tr>
+    <tr>
+        <td>Pet Owner: {{pet.owner}}</td>
+    </tr>
+</table>
+{% endfor %}
