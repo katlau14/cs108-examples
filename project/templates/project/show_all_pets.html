@@ -4,13 +4,16 @@
 {% for pet in pets %}
 <table>
     <tr>
-        <th>{{pet.name}}</th>
+        <h3>{{pet.name}}</h3>
     </tr>
     <tr>
         <td><img src="{{pet.image.url}}" style="max-width: 200;"></td>
     </tr>
     <tr>
         <td>Breed: {{pet.breed}}</td>
+    </tr>
+    <tr>
+        <td>About Me: {{pet.blurb}}</td>
     </tr>
     <tr>
         <td>Pet Owner: {{pet.owner}}</td>
