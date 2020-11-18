@@ -1,10 +1,12 @@
 <!--show_all_pets.html-->
+{% extends 'project/base.html' %}
+{% block content %}
 
 <h1>All Pets</h1>
 {% for pet in pets %}
 <table>
     <tr>
-        <h3>{{pet.name}}</h3>
+        <h3><a href="{% url 'show_pet_page' pet.pk %}">{{pet.name}}</a></h3>
     </tr>
     <tr>
         <td><img src="{{pet.image.url}}" style="max-width: 200;"></td>
@@ -16,7 +18,9 @@
         <td>About Me: {{pet.blurb}}</td>
     </tr>
     <tr>
-        <td>Pet Owner: {{pet.owner}}</td>
+        <td>Pet Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></td>
     </tr>
 </table>
 {% endfor %}
+
+{% endblock %}

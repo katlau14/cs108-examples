@@ -1,0 +1,14 @@
+<!--base.html-->
+
+<html>
+    <head>
+        <title>Puppy Playdate</title>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'show_all_pets' %}">Home</a>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

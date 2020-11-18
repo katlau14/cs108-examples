@@ -1,12 +1,22 @@
 <!--show_owner_page.html-->
+{% extends 'project/base.html' %}
+{% block content %}
 
 <h3>{{owner.first_name}} {{owner.last_name}}</h3>
 
 <table>
     <tr>
-        <td>{{owner.email}}</td>
-    </tr>
-    <tr>
         <td>{{owner.city}}</td>
     </tr>
+    
+    <th>Contact Information</th>
+    <tr>
+        <td>Email: {{owner.email}}</td>
+    </tr>
+    <tr>
+        <td>Phone Number: {{owner.phone}}</td>
+    </tr>
 </table>
+
+
+{% endblock %}
