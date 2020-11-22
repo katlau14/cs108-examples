@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Owner, Pet, Playdate, Review
+from .forms import *
 
 # Create your views here.
 class ShowOwnerPageView(DetailView):
@@ -37,3 +38,31 @@ class ShowAllPetsView(ListView):
     model = Pet
     template_name = "project/show_all_pets.html"
     context_object_name = "pets"
+
+class ShowAllPlaydatesView(ListView):
+    '''shows all playdates'''
+
+    model = Playdate
+    template_name = "project/show_all_playdates.html"
+    context_object_name = "playdates"
+
+class CreateOwnerProfileView(CreateView):
+    '''shows the create owner profile form'''
+
+    model = Owner
+    form_class = CreateOwnerProfileForm
+    template_name = "project/create_owner_form.html"
+
+class CreatePetProfileView(CreateView):
+    '''shows the create pet profile form'''
+
+    model = Pet
+    form_class = CreatePetProfileForm
+    template_name = "project/create_pet_form.html"
+
+class CreatePlaydateView(CreateView):
+    '''shows the create playdate form'''
+
+    model = Playdate
+    form_class = CreatePlaydateForm
+    template_name = "project/create_playdate_form.html"

@@ -6,7 +6,9 @@
     </head>
     <body>
         <header>
-            <a href="{% url 'show_all_pets' %}">Home</a>
+            <a href="{% url 'show_all_pets' %}">All Pets</a>
+            <a href="{% url 'create_owner_form' %}">Create Owner Profile</a>
+            <a href="{% url 'create_pet_form' %}">Create Pet Profile</a>
         </header>
         {% block content %}
         {% endblock %}

@@ -1,0 +1,25 @@
+<!--show_all_playdates.html-->
+{% extends 'project/base.html' %}
+{% block content %}
+
+<h2>Playdates</h2>
+
+{% for playdate in playdates %}
+<table>
+    <tr>
+        <td>Pets on this Playdate: {{playdate.pet}}</td>
+    </tr>
+
+    <tr>
+        <td>Pet Owners: {{playdate.owner}}</td>
+    </tr>
+    <tr>
+        <td>Playdate Location: {{playdate.location}}</td>
+    </tr>
+    <tr>
+        <td>Playdate Time: {{playdate.time}}</td>
+    </tr>
+</table>
+
+{% endfor %}
+{% endblock %}

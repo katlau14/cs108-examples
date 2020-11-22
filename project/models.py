@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Owner(models.Model):
@@ -14,6 +15,11 @@ class Owner(models.Model):
         '''return a string representation of the pet owner'''
         return f'{self.first_name} {self.last_name}'
 
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+
+        return reverse('show_owner_page', kwargs={'pk':self.pk})
+
 class Pet(models.Model):
     '''model the data attributes of the pet'''
 
@@ -27,6 +33,10 @@ class Pet(models.Model):
     def __str__(self):
         '''return a string representation of the pet'''
         return self.name
+
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+        return reverse('show_pet_page', kwargs={'pk':self.pk})
 
 class Playdate(models.Model):
     '''model the data attributes of a playdate'''
