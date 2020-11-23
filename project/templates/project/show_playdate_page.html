@@ -1,7 +1,9 @@
 <!--show_playdate_page.html-->
 {% extends 'project/base.html' %}
 {% block content %}
-
+<header>
+    <a href="{% url 'show_pet_page' playdate.pk %}">Back to Pet Page</a>
+</header>
 <h2>Playdate</h2>
 
 <table>
@@ -25,6 +27,9 @@
         <td>{{owners.first_name}} {{owners.last_name}}</td>
     </tr>
     {% endfor %}
+    <tr>
+        <td><a href="{% url 'show_playdate_review' playdate.pk %}">Playdate Review</a></td>
+    </tr>
 </table>
 
 {% endblock %}
