@@ -46,6 +46,19 @@ class ShowAllPlaydatesView(ListView):
     template_name = "project/show_all_playdates.html"
     context_object_name = "playdates"
 
+    # get context data
+    def get_context_data(self, **kwargs):
+        '''return context data for playdates view'''
+
+        context = super(ShowAllPlaydatesView, self).get_context_data(**kwargs)
+        pet_pk = self.kwargs['pk']
+        pd = Playdate.objects.filter(pet=pet_pk)
+        context['playdates'] = pd
+        pet_pk = self.kwargs['pk']
+        context['pk'] = pet_pk
+        return context
+
+
 class CreateOwnerProfileView(CreateView):
     '''shows the create owner profile form'''
 

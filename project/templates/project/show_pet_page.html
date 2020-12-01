@@ -21,7 +21,7 @@
         <td>Contact My Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></td>
     </tr>
     <tr>
-        <td><a href="{% url 'show_all_playdates' %}">{{pet.name}}'s Playdates</a></td>
+        <td><a href="{% url 'show_all_playdates' pet.pk %}">{{pet.name}}'s Playdates</a></td>
     </tr>
     <tr>
         <td><a href="{% url 'create_playdate_form' %}">Plan a Playdate</a></td>

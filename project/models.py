@@ -29,6 +29,7 @@ class Pet(models.Model):
     image = models.ImageField(blank=True)
     blurb = models.TextField(blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    #playdate = models.ManyToManyField(Playdate, blank=True)
 
     def __str__(self):
         '''return a string representation of the pet'''
@@ -38,6 +39,7 @@ class Pet(models.Model):
         '''provide a url to show this object'''
         return reverse('show_pet_page', kwargs={'pk':self.pk})
 
+
 class Playdate(models.Model):
     '''model the data attributes of a playdate'''
 
@@ -45,6 +47,8 @@ class Playdate(models.Model):
     time = models.DateTimeField(blank=True)
     owner = models.ManyToManyField(Owner, blank=True)
     pet = models.ManyToManyField(Pet, blank=True)
+    # attribute of confirm (confirm=false)
+    #confirm = models.BooleanField(default=False)
 
     def __str__(self):
         '''return a string representation of playdate'''
@@ -73,3 +77,4 @@ class Review(models.Model):
     def __str__(self):
         '''return a string representation of the playdate review'''
         return f'{self.timestamp} {self.message}'
+# get all reviews under owners model 
