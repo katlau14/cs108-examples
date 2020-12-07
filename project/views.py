@@ -120,3 +120,16 @@ class DeleteReviewView(DeleteView):
         
         return reverse('show_playdate_page', kwargs={'pk': playdate_pk})
     
+class UpdateOwnerView(UpdateView):
+    '''shows the update owner profile form'''
+
+    model = Owner
+    form_class = UpdateOwnerForm
+    template_name = 'project/update_owner_form.html'
+
+class UpdatePetView(UpdateView):
+    '''shows the update pet profile form'''
+
+    model = Pet
+    form_class = UpdatePetForm
+    template_name = 'project/update_pet_form.html'

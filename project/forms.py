@@ -1,7 +1,9 @@
 # project/forms.py
 
 from django import forms
+from django.urls import reverse
 from .models import *
+
 
 class CreateOwnerProfileForm(forms.ModelForm):
     '''a form to create new owner profiles'''
@@ -29,7 +31,7 @@ class CreatePetProfileForm(forms.ModelForm):
     class Meta:
 
         model = Pet
-        fields = ['name', 'breed', 'age', 'image', 'blurb']
+        fields = ['name', 'breed', 'age', 'image', 'blurb', 'owner']
 
 class CreatePlaydateForm(forms.ModelForm):
     '''a form to create a new playdate'''
@@ -49,3 +51,29 @@ class CreateReviewForm(forms.ModelForm):
 
         model = Review
         fields = ['playdate', 'owner', 'message', 'timestamp']
+
+class UpdateOwnerForm(forms.ModelForm):
+    '''a form to update the owner profile'''
+
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+
+        return reverse('show_owner_page', kwargs={'pk':self.pk})
+
+    class Meta:
+
+        model = Owner
+        fields = ['first_name', 'last_name', 'email', 'phone', 'city']
+
+class UpdatePetForm(forms.ModelForm):
+    '''a form to update the pet profile'''
+
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+
+        return reverse('show_pet_page', kwargs={'pk':self.pk})
+
+    class Meta:
+
+        model = Pet
+        fields = ['name', 'breed', 'age', 'image', 'blurb', 'owner']

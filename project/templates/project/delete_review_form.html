@@ -13,7 +13,7 @@
     {% csrf_token %}
     <input type='submit' name='yes' value='yes'>
 </form>
-<form method='GET' action="{% url 'show_playdate_page' playdate.pk %}">
+<form method='GET' action="{% url 'show_playdate_review' review.pk %}">
     {% csrf_token %}
     <input type='submit' name="no" value="no">
 </form>

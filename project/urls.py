@@ -15,6 +15,8 @@ urlpatterns = [
     path('all_playdates/<int:pk>', ShowAllPlaydatesView.as_view(), name="show_all_playdates"),
     path('create_review', CreateReviewView.as_view(), name="create_review_form"),
     path('playdate/<int:playdate_pk>/delete_review/<int:review_pk>', DeleteReviewView.as_view(), name = "delete_review"),
+    path('owner/<int:pk>/update', UpdateOwnerView.as_view(), name = "update_owner_form"),
+    path('pet/<int:pk>/update', UpdatePetView.as_view(), name="update_pet_form"),
     
 
 
