@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Owner, Pet, Playdate, Review
 from .forms import *
+from django.urls import reverse
 
 # Create your views here.
 class ShowOwnerPageView(DetailView):
@@ -79,3 +80,7 @@ class CreatePlaydateView(CreateView):
     model = Playdate
     form_class = CreatePlaydateForm
     template_name = "project/create_playdate_form.html"
+
+
+
+    

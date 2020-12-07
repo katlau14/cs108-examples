@@ -47,9 +47,7 @@ class Playdate(models.Model):
     time = models.DateTimeField(blank=True)
     owner = models.ManyToManyField(Owner, blank=True)
     pet = models.ManyToManyField(Pet, blank=True)
-    # attribute of confirm (confirm=false)
-    #confirm = models.BooleanField(default=False)
-
+  
     def __str__(self):
         '''return a string representation of playdate'''
         return f'{self.time}'
