@@ -1,0 +1,21 @@
+<!--delete_review_form.html-->
+{% extends 'project/base.html' %}
+{% block content %}
+
+<h2>Would you like to delete this review?</h2>
+
+{{review}}
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type='submit' name='yes' value='yes'>
+</form>
+<form method='GET' action="{% url 'show_playdate_page' playdate.pk %}">
+    {% csrf_token %}
+    <input type='submit' name="no" value="no">
+</form>
+
+{% endblock %}

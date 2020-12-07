@@ -19,6 +19,9 @@
         <td>{{review.timestamp}}</td>
         <td>{{review.message}}</td>
     </tr>
+    <tr>
+        <td><a href= "{% url 'delete_review' review_pk=review.pk playdate_pk=review.playdate.pk %}">Delete Review</a></td>
+    </tr>
 </table>
 
 

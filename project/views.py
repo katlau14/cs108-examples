@@ -59,7 +59,6 @@ class ShowAllPlaydatesView(ListView):
         context['pk'] = pet_pk
         return context
 
-
 class CreateOwnerProfileView(CreateView):
     '''shows the create owner profile form'''
 
@@ -81,6 +80,43 @@ class CreatePlaydateView(CreateView):
     form_class = CreatePlaydateForm
     template_name = "project/create_playdate_form.html"
 
+class CreateReviewView(CreateView):
+    '''shows the create review form'''
 
+    model = Review
+    form_class = CreateReviewForm
+    template_name = "project/create_review_form.html"
 
+class DeleteReviewView(DeleteView):
+    '''shows the delete view form'''
+
+    template_name = "project/delete_review_form.html"
+    queryset = Playdate.objects.all()
+
+    def get_context_data(self, **kwargs):
+        '''return context data'''
+
+        context = super(DeleteReviewView, self).get_context_data(**kwargs)
+        review = Review.objects.get(pk=self.kwargs['review_pk'])
+        context['review'] = review
+        return context
+
+    def get_object(self):
+        '''return status message to be deleted'''
+
+        # read the URL data values into variables
+        playdate_pk = self.kwargs['playdate_pk']
+        review_pk = self.kwargs['review_pk']
+
+        # find the Status Message object, and return it
+        review = Review.objects.get(pk=review_pk)
+        return review
+
+    def get_success_url(self):
+        '''return the URL to which to redirect the user'''
+
+        playdate_pk = self.kwargs['playdate_pk']
+        review_pk = self.kwargs['review_pk']
+        
+        return reverse('show_playdate_page', kwargs={'pk': playdate_pk})
     
