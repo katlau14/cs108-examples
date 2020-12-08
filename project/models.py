@@ -65,6 +65,10 @@ class Playdate(models.Model):
         owners = Owner.objects.filter(playdate=self)
         return owners
 
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+        return reverse('show_playdate_page', kwargs={'pk':self.pk})
+
 class Review(models.Model):
     '''model the data attributes of the playdate review'''
 

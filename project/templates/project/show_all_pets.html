@@ -2,19 +2,21 @@
 {% extends 'project/base.html' %}
 {% block content %}
 
-{% for pet in pets %}
+
 <!-- !PAGE CONTENT! -->
+
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+    <h1>All Pets</h1>
 
     <!-- First Photo Grid-->
+    {% for pet in pets %}
     <div class="w3-row-padding w3-padding-16 w3-center" id="food">
       <div class="w3-quarter">
-        <h1>All Pets</h1>
-        <img src="{{pet.image.url}}" style="width:100%">
+        <a href="{% url 'show_pet_page' pet.pk %}"><img src="{{pet.image.url}}" style="width:100%"></a>
         <h3><a href="{% url 'show_pet_page' pet.pk %}">{{pet.name}}</a></h3>
         <p>Breed: {{pet.breed}}</p>
         <p>About Me: {{pet.blurb}}</p>
-        <p>Pet Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></p>
+        <p>Pet Owner: <a href="{% url 'show_owner_page' pet.owner.pk %}">{{pet.owner}}</a></p>
       </div>
     </div>
 {% endfor %}
