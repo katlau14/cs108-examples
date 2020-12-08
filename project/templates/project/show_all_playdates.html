@@ -1,7 +1,7 @@
 <!--show_all_playdates.html-->
 {% extends 'project/base.html' %}
 {% block content %}
-
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 <h2>Playdates</h2>
 
 {% for playdate in playdates %}
@@ -16,6 +16,7 @@
         <td><a href="{% url 'show_playdate_page' playdate.pk %}">Playdate Details</a></td>
     </tr>
 </table>
+</div>
 
 {% endfor %}
 {% endblock %}

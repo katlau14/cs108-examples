@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 # Create your models here.
 class Owner(models.Model):
@@ -44,7 +45,7 @@ class Playdate(models.Model):
     '''model the data attributes of a playdate'''
 
     location = models.TextField(blank=True)
-    time = models.DateTimeField(blank=True)
+    time = models.DateTimeField(default=timezone.now)
     owner = models.ManyToManyField(Owner, blank=True)
     pet = models.ManyToManyField(Pet, blank=True)
   
@@ -70,7 +71,7 @@ class Review(models.Model):
     playdate = models.ForeignKey(Playdate, on_delete=models.CASCADE)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     message = models.TextField(blank=True)
-    timestamp = models.DateTimeField(blank=True)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         '''return a string representation of the playdate review'''

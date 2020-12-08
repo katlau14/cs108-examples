@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'quotes.apps.QuotesConfig',
     'mini_fb.apps.MiniFbConfig',
     'project.apps.ProjectConfig',
+    'datetimewidget',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'cs108.urls'
@@ -127,3 +129,4 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = "/media/"
+

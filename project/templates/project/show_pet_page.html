@@ -1,32 +1,22 @@
 <!--show_pet_page.html-->
 {% extends 'project/base.html' %}
 {% block content %}
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-<h2>{{pet.name}}</h2>
-<h3>{{pet.owner}}'s pet</h3>
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+      <div class="w3-quarter">
+        <img src="{{pet.image.url}}" style="width:100%">
+        <h2>{{pet.name}}</h2>
+        <h3>{{pet.owner}}'s pet</h3>
+        <p>Breed: {{pet.breed}}</p>
+        <p>About Me: {{pet.blurb}}</p>
+        <p>Contact My Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></p>
+        <p><a href="{% url 'show_all_playdates' pet.pk %}">{{pet.name}}'s Playdates</a></p>
+        <p><a href="{% url 'create_playdate_form' %}">Plan a Playdate</a></p>
+        <p><a href="{% url 'update_pet_form' pet.pk %}">Update Pet Profile</a></p>
+      </div>
+    </div>
 
-<img src="{{pet.image.url}}" style="max-width: 400;">
-
-<table>
-    <tr>
-        <td>Breed: {{pet.breed}}</td>
-    </tr>
-    <tr>
-        <td>Age: {{pet.age}}</td>
-    </tr>
-    <tr>
-        <td>About Me: {{pet.blurb}}</td>
-    </tr>
-    <tr>
-        <td>Contact My Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></td>
-    </tr>
-    <tr>
-        <td><a href="{% url 'show_all_playdates' pet.pk %}">{{pet.name}}'s Playdates</a></td>
-    </tr>
-    <tr>
-        <td><a href="{% url 'create_playdate_form' %}">Plan a Playdate</a></td>
-    </tr>
-</table>
-<h2><a href="{% url 'update_pet_form' pet.pk %}">Update Pet Profile</a></h2>
 
 {% endblock %}

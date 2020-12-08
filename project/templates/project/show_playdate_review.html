@@ -1,7 +1,7 @@
 <!--show_playdate_review.html-->
 {% extends 'project/base.html' %}
 {% block content %}
-
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 <header>
     <a href="{% url 'show_playdate_page' review.pk %}">Playdate</a>
 </header>
@@ -23,6 +23,6 @@
         <td><a href= "{% url 'delete_review' review_pk=review.pk playdate_pk=review.playdate.pk %}">Delete Review</a></td>
     </tr>
 </table>
-
+</div>
 
 {% endblock %}

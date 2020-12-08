@@ -36,8 +36,6 @@ class CreatePetProfileForm(forms.ModelForm):
 class CreatePlaydateForm(forms.ModelForm):
     '''a form to create a new playdate'''
 
-    time = forms.DateTimeField(label="Time", required=True)
-    #how to format the date time field to be easier for input
 
     class Meta:
 
