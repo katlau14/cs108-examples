@@ -36,7 +36,6 @@ class CreatePetProfileForm(forms.ModelForm):
 class CreatePlaydateForm(forms.ModelForm):
     '''a form to create a new playdate'''
 
-
     class Meta:
 
         model = Playdate
