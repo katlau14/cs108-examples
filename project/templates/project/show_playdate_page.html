@@ -30,8 +30,10 @@
     </tr>
     {% endfor %}
     <tr>
+    {% for reviews in playdate.get_reviews %}
         <td><a href="{% url 'show_playdate_review' playdate.pk %}">Playdate Review</a></td>
     </tr>
+    {% endfor %}
     <tr>
         <td><a href="{% url 'create_review_form' %}">Write a Review</a></td>
     </tr>
