@@ -35,6 +35,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()"
   class="w3-bar-item w3-button">Close Menu</a>
+  <a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
   <a href="{% url 'show_all_pets' %}" onclick="w3_close()" class="w3-bar-item w3-button">All Pets</a>
   <a href="{% url 'create_owner_form' %}" onclick="w3_close()" class="w3-bar-item w3-button">Create Owner Profile</a>
   <a href="{% url 'create_pet_form' %}" onclick="w3_close()" class="w3-bar-item w3-button">Create Pet Profile</a>
@@ -48,27 +49,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   </div>
 </div>
   
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1600px;margin-top:100px">
-
-  
-  <hr id="about">
-
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32 w3-center">  
-    <h3>Welcome to Puppy Playdate!</h3><br>
-    <img src="/media/Puppy Playdate.jpg" class="w3-image" style="display:block;margin:auto" width="800" height="533">
-    <div class="w3-padding-32">
-      <h4><b>Puppy Playdate</b></h4>
-      <h6><i>Where Your Furry Friends Can Find New Friends</i></h6>
-      <p>We give our pets all the love they deserve, but sometimes what they need is to run around with another four-legged friend. 
-        Look no further, as Puppy Playdate provides an easy way for you to find the perfect companion for your pet! Our site allows 
-        you to find other pets also looking for someone to play with. Look through their profile to see their photos, bio, and information.
-        When you have found the perfect buddy for your pet, schedule a playdate with them at your local park! After your playdate, feel free to leave
-        a review of the playdate for future companions to know how your experience was. </p>
-  </div>
-  <hr>
   {% block content %}
 {% endblock %}
 

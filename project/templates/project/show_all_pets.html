@@ -2,11 +2,28 @@
 {% extends 'project/base.html' %}
 {% block content %}
 
-
 <!-- !PAGE CONTENT! -->
 
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
     <h1>All Pets</h1>
+
+    {% load columns %}
+
+<div class="row">
+    {% for col in list|columns:3 %}
+        <div class="col-md-4">
+            {% for pet in col %}
+                <div class="pet">{{pet.name}}
+                    <a href="{% url 'show_pet_page' pet.pk %}"><img src="{{pet.image.url}}" style="width:100%"></a>
+     <h3><a href="{% url 'show_pet_page' pet.pk %}">{{pet.name}}</a></h3>
+     <p>Breed: {{pet.breed}}</p>
+     <p>About Me: {{pet.blurb}}</p>
+     <p>Pet Owner: <a href="{% url 'show_owner_page' pet.owner.pk %}">{{pet.owner}}</a></p>
+                </div>
+            {% endfor %}
+        </div><!-- /col-md-4 -->
+    {% endfor %}
+</div><!-- /row -->
 
     <!-- First Photo Grid-->
     {% for pet in pets %}

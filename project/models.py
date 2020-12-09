@@ -80,4 +80,5 @@ class Review(models.Model):
     def __str__(self):
         '''return a string representation of the playdate review'''
         return f'{self.timestamp} {self.message}'
+
 # get all reviews under owners model 

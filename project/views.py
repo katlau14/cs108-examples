@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from .models import Owner, Pet, Playdate, Review
 from .forms import *
 from django.urls import reverse
 
 # Create your views here.
+class HomePageView(TemplateView):
+    '''A specialized version of TemplateView to display our home page.'''
+
+    template_name = "project/home.html"
+
 class ShowOwnerPageView(DetailView):
     '''shows an owner's profile page'''
 
