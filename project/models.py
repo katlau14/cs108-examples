@@ -80,5 +80,8 @@ class Review(models.Model):
     def __str__(self):
         '''return a string representation of the playdate review'''
         return f'{self.timestamp} {self.message}'
+    
+    def get_absolute_url(self):
+        '''provide a url to show this object'''
+        return reverse('show_playdate_review', kwargs={'pk':self.pk})
 
-# get all reviews under owners model 
