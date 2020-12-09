@@ -10,6 +10,7 @@
         <h2>{{pet.name}}</h2>
         <h3>{{pet.owner}}'s pet</h3>
         <p>Breed: {{pet.breed}}</p>
+        <p>Age: {{pet.age}}</p>
         <p>About Me: {{pet.blurb}}</p>
         <p>Contact My Owner: <a href="{% url 'show_owner_page' pet.pk %}">{{pet.owner}}</a></p>
         <p><a href="{% url 'show_all_playdates' pet.pk %}">{{pet.name}}'s Playdates</a></p>
