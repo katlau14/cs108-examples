@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'quotes.apps.QuotesConfig',
     'mini_fb.apps.MiniFbConfig',
     'project.apps.ProjectConfig',
-    'columns',
 ]
 
 MIDDLEWARE = [
