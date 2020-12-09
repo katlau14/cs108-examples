@@ -20,7 +20,7 @@ class CreateOwnerProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'phone', 'city']
 
 class CreatePetProfileForm(forms.ModelForm):
-    '''a form to create new owner profiles'''
+    '''a form to create new pet profiles'''
 
     name = forms.CharField(label="Name", required=True)
     breed = forms.CharField(label="Breed", required=True)

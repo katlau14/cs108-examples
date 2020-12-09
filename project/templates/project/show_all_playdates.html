@@ -1,8 +1,13 @@
-<!--show_all_playdates.html-->
+<!--file: project/show_all_playdates.html
+    author: Katrina Lau (katlau@bu.edu)
+    description: Puppy Playdate html page to see all the playdates for a pet -->
+
 {% extends 'project/base.html' %}
 {% block content %}
+
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-<h2>Playdates</h2>
+
+    <h2>Playdates</h2>
 
 {% for playdate in playdates %}
 <table>

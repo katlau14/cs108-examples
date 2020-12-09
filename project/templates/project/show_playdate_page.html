@@ -1,8 +1,11 @@
-<!--show_playdate_page.html-->
+<!--file: project/show_playdate_page.html
+    author: Katrina Lau (katlau@bu.edu)
+    description: Puppy Playdate playdates page html -->
 {% extends 'project/base.html' %}
 {% block content %}
 
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
 <header>
     <a href="{% url 'show_pet_page' playdate.pk %}">Back to Pet Page</a>
 </header>
@@ -23,17 +26,20 @@
         <td>{{pets.name}}</td>
     </tr>
     {% endfor %}
+
     <th>Pet Owners:</th>
     <tr>
     {% for owners in playdate.get_owners %}
         <td>{{owners.first_name}} {{owners.last_name}}</td>
     </tr>
     {% endfor %}
+
     <tr>
     {% for reviews in playdate.get_reviews %}
         <td><a href="{% url 'show_playdate_review' playdate.pk %}">Playdate Review</a></td>
     </tr>
     {% endfor %}
+
     <tr>
         <td><a href="{% url 'create_review_form' %}">Write a Review</a></td>
     </tr>

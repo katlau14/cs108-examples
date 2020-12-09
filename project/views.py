@@ -6,7 +6,7 @@ from django.urls import reverse
 
 # Create your views here.
 class HomePageView(TemplateView):
-    '''A specialized version of TemplateView to display our home page.'''
+    '''A specialized version of TemplateView to display the home page.'''
 
     template_name = "project/home.html"
 
@@ -39,7 +39,7 @@ class ShowReviewView(DetailView):
     context_object_name = "review"
 
 class ShowAllPetsView(ListView):
-    '''shows all pets'''
+    '''shows all pet profiles'''
 
     model = Pet
     template_name = "project/show_all_pets.html"
@@ -52,16 +52,19 @@ class ShowAllPlaydatesView(ListView):
     template_name = "project/show_all_playdates.html"
     context_object_name = "playdates"
 
-    # get context data
     def get_context_data(self, **kwargs):
         '''return context data for playdates view'''
 
+        # obtain the default context data (a dictionary) from the superclass
         context = super(ShowAllPlaydatesView, self).get_context_data(**kwargs)
         pet_pk = self.kwargs['pk']
+        # filter the playdates for the specific pet
         pd = Playdate.objects.filter(pet=pet_pk)
+        # add into context dictionary
         context['playdates'] = pd
         pet_pk = self.kwargs['pk']
         context['pk'] = pet_pk
+        # return the context dictionary
         return context
 
 class CreateOwnerProfileView(CreateView):
@@ -93,27 +96,30 @@ class CreateReviewView(CreateView):
     template_name = "project/create_review_form.html"
 
 class DeleteReviewView(DeleteView):
-    '''shows the delete view form'''
+    '''shows the delete review form'''
 
     template_name = "project/delete_review_form.html"
     queryset = Playdate.objects.all()
 
     def get_context_data(self, **kwargs):
-        '''return context data'''
+        '''return context data for the delete review form'''
 
+        # obtain the default context data (a dictionary) from the superclass
         context = super(DeleteReviewView, self).get_context_data(**kwargs)
+        # retrieve the specific review object 
         review = Review.objects.get(pk=self.kwargs['review_pk'])
         context['review'] = review
+        #return this context dictionary
         return context
 
     def get_object(self):
-        '''return status message to be deleted'''
+        '''return the review to be deleted'''
 
         # read the URL data values into variables
         playdate_pk = self.kwargs['playdate_pk']
         review_pk = self.kwargs['review_pk']
 
-        # find the Status Message object, and return it
+        # find the Review object, and return it
         review = Review.objects.get(pk=review_pk)
         return review
 

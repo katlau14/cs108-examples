@@ -1,4 +1,7 @@
-<!--show_all_pets.html-->
+<!--file: project/show_all_pets.html
+    author: Katrina Lau (katlau@bu.edu)
+    description: Puppy Playdate html page to see all pets in the database -->
+
 {% extends 'project/base.html' %}
 {% block content %}
 
@@ -28,19 +31,5 @@
                 </div></div>
             {% endfor %}
      
-
-    <!-- First Photo Grid--> <!--
-    {% for pet in pets %}
-    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-      <div class="w3-quarter">
-        <a href="{% url 'show_pet_page' pet.pk %}"><img src="{{pet.image.url}}" style="width:100%"></a>
-        <h3><a href="{% url 'show_pet_page' pet.pk %}">{{pet.name}}</a></h3>
-        <p>Breed: {{pet.breed}}</p>
-        <p>About Me: {{pet.blurb}}</p>
-        <p>Pet Owner: <a href="{% url 'show_owner_page' pet.owner.pk %}">{{pet.owner}}</a></p>
-      </div>
-    </div>
-{% endfor %}
--->
 {% endblock %}
 
